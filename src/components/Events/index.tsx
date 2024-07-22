@@ -1,50 +1,16 @@
-import React, { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import EventsList from "./EventsList";
 
 
 function Events() {
 const events_url = 'http://3.38.98.134/events' 
-  
-const useFetch = ({
-  url
-} = {
-  url: events_url,
-}) => {
-  const [data, setData] = useState<any>([])
-  const [loading, setLoading] = useState(false)
-
-  const fetchData = async () => {
-      setLoading(true)
-      try{
-          const response = await fetch(url)
-          const data = await response.json()
-          if(data.statusCode === 200) {
-              setData(data.data);
-          }
-      } catch(error) {
-          console.log(error);
-      }
-      finally{
-          setLoading(false)
-      }
-  }
-
-  useEffect(() =>{
-      fetchData()
-  }, [])
-
-  return {data, loading}
-}
-
-const  { data, loading } = useFetch();
-console.log(data, 'events');
+const  { data, loading } = useFetch({
+  url: events_url
+});
 
 if (loading) {
   return <div>Loading</div>;
 }
- 
-
   return (
     <div id="events">
       <div className="container">

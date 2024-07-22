@@ -28,9 +28,11 @@ const useFetch = ({
             setLoading(false)
         }
     }
+
     useEffect(() => {
         fetchData()
     }, [])
+    
     return {data, loading}
 }
 
