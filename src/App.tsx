@@ -10,6 +10,7 @@ import { Vacancies } from "./components/Vacancy/Vacancies";
 import DetailOrganization from "./components/DetailOrganization";
 import Events from "./components/Events";
 import VideoList from "./components/VideoDetail";
+import VideoDetail from "./components/VideoDetail";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Route path="/vacancy" element={<Vacancies />} />
         <Route path="/events" element={<Events />} />
         <Route path="/meetups" element={<Videoo />} />
-        <Route path="/videoDetail" element={< VideoList/>} />
+        <Route path="/videoDetail" element={<VideoDetail />} />
+        <Route path="/videoList" element={< VideoList/>} />
         <Route path="/organizations" element={<Organizasii />} />
         <Route path="/community" element={<Soobshestvo />} />
         <Route path="/detailVacancy" element={<DetailVacancy />} />
