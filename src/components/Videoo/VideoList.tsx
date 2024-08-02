@@ -19,23 +19,6 @@ const VideoList = ({
     created_at: string
     updated_at: string
 }) => {
-    // {
-    //     "id": 0,
-    //     "title": "string",
-    //     "cover": "string",
-    //     "slug": "string",
-    //     "date": "2024-07-29T12:10:47.622Z",
-    //     "created_at": "2024-07-29T12:10:47.622Z",
-    //     "updated_at": "2024-07-29T12:10:47.622Z",
-    //     "gradient": 0,
-    //     "organization_name": "string",
-    //     "cover_formats": [
-    //       {
-    //         "type": "string",
-    //         "url": "string"
-    //       }
-    //     ]
-    //   }
     const nav = useNavigate()
 
     return(
