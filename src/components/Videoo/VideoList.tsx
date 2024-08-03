@@ -1,10 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+type CoverFormat = {
+  type: string;
+  url: string;
+};
 
 const VideoList = ({
     title = '',
-    cover = '',
+    cover = [],
     slug ='',
     organization_name = '',
     date ='',
@@ -12,7 +16,7 @@ const VideoList = ({
     updated_at = '',
 } : {
     title: string
-    cover: string
+    cover: CoverFormat[]
     slug: string
     organization_name: string
     date: string
@@ -20,7 +24,7 @@ const VideoList = ({
     updated_at: string
 }) => {
     const nav = useNavigate()
-
+    const url = cover[0]?.url || "https://devkg.com/images/meetups/417c92a3f184b3cb5c7e204c63307248.webp"
     return(
       <div className="video--cards__card" onClick={() => nav('/videoDetail') }>
       <h1>
@@ -40,7 +44,7 @@ const VideoList = ({
       </div>
       <div className="video--cards__card--img"></div>
       <img
-        src="https://devkg.com/images/meetups/417c92a3f184b3cb5c7e204c63307248.webp"
+        src={url}
         alt="img"/>
     </div>
     )

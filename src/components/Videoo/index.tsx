@@ -5,7 +5,7 @@ import VideoList from "./VideoList";
 
 const Videoo = () => {
 
-  const { data, loading } = useFetch();
+  const { data, loading } = useFetch({url:'http://3.38.98.134/meetups'});
   console.log(data);
   
     if (loading || !data) {
@@ -29,7 +29,7 @@ const Videoo = () => {
                date={meetups.date}
                created_at={meetups.created_at}
                updated_at={meetups.updated_at}
-               cover={meetups.cover}
+               cover={meetups.cover_formats}
                slug={meetups.slug}
               />
             )
