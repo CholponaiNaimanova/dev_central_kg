@@ -1,0 +1,80 @@
+#video {
+    .video {
+      padding: 50px 0;
+      &--btn {
+        display: flex;
+        justify-content: end;
+        button {
+          background: #6fcf97;
+          font-weight: 700;
+          font-size: 14px;
+          padding: 10px 25px;
+          border: none;
+          outline: none;
+          color: white;
+        }
+      }
+      h2 {
+        color: #a7b0c2;
+        font-size: 24px;
+        letter-spacing: 0.03em;
+        margin-bottom: 30px;
+        font-weight: 700;
+      }
+      &--cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: space-between;
+        &__card {
+          position: relative;
+          cursor: pointer;
+          color: white;
+          width: 48%;
+          overflow: hidden;
+          h1 {
+            position: relative;
+            z-index: 99;
+            font-size: 34px;
+            width: 373px;
+            margin: 29px 37px 9px 37px;
+          }
+          &--titles {
+            display: flex;
+            gap: 0px;
+            position: relative;
+            z-index: 99;
+            h3 {
+              font-size: 14px;
+              letter-spacing: 0.03em;
+              font-weight: 300;
+              margin: 0px 37px;
+            }
+            h2 {
+              font-weight: 700;
+              font-size: 18px;
+              color: white;
+              margin: 0px 37px 27px 37px;
+            }
+          }
+          &--img {
+            position: absolute;
+            width: 100%;
+            background-color: rgb(88 94 91 / 89%);
+            z-index: 5;
+            height: 100%;
+            top: 0;
+          }
+          img {
+            filter: blur(3px);
+            width: 110%;
+            height: 110%;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            z-index: 2;
+          }
+        }
+      }
+    }
+  }
