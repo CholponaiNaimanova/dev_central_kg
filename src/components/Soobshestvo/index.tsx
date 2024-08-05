@@ -4,12 +4,12 @@ import SoobshestvoList from "./Soobshestvo";
 
 function Soobshestvo() {
   const { data, loading } = useFetch();
-  console.log(data);
   
   if (loading || !data) {
     return <div>Загрузка...</div>;
   }
 
+  
   return (
     <div id="soo">
       <div className="container">
