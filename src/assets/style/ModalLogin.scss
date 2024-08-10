@@ -45,39 +45,46 @@
             right: 70px;
         }
     }
-    .modal-text{
+    .login{
         display: flex;
-        align-items: center;
         flex-direction: column;
-        justify-content: start;
-        h1{
-            box-sizing: border-box;
-            width: 100%;
-            text-align: center;
-            letter-spacing: 1px;
-            font-size: 20px;
-            font-weight: 400;
-            padding-bottom: 20px;
-        }
-        .btn{
-            display: inline-block;
-            font-size: 13px;
-            font-weight: 500;
-            line-height: 20px;
-            border-radius: 17px;
-            background-color: #54a9eb;
-            overflow: hidden;
-            padding: 7px 16px 6px;
-            margin: 0;
-            border: none;
-            color: #fff;
-            font-size: 16px;
-            line-height: 20px;
-            padding: 9px 21px 11px;
+        align-items: center;
+        justify-content: center;
+        padding-left: 140px;
+        input{
+            font-size: 23px;
+            margin: 15px;
             border-radius: 20px;
+            padding: 8px;
+            border: none;
         }
-        
+        .submitBtn{
+            font-size: 20px;
+            padding: 7px;
+            padding-left: 30px;
+            padding-right: 30px;
+            background: rgb(83, 212, 83);
+            border: none;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            margin-top: 10px; 
+            font-weight: 500;
+        }
+        .register{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 15px;
+            p{
+                font-size: 15px;
+            }
+            .signupLink{
+                border: none;
+                color: rgb(41, 120, 255);
+                background: none;
+                cursor: pointer;
+            }
+        }
     }
-
-    
 }
