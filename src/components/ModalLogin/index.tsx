@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 interface LoginModalProps {
     show: boolean;
@@ -11,6 +13,8 @@ const signupAPI = 'http://3.38.98.134/auth/signup'
 
 
 const ModalLogin: React.FC<LoginModalProps> = ({ show, handleClose }) => {
+
+    const navigate = useNavigate()
 
     const [userName, setUserName] = React.useState<string>('')
     const [password, setPassword] = React.useState<string>('')
@@ -38,7 +42,9 @@ const ModalLogin: React.FC<LoginModalProps> = ({ show, handleClose }) => {
                 const {token, message} = res.data
                 if(res.data.success){
                     console.log("data", res.data);
+                    Cookies.set('authToken', token)
                     alert(message)
+                    navigate('/')
                 } else{
                     alert(message)
                 }
