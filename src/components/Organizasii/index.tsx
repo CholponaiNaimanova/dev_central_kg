@@ -1,40 +1,30 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
+import OrganizationsList from "./OrganizationsList";
 
 function Organizasii() {
-  const nav = useNavigate();
+  const { data, loading } = useFetch({url:'http://3.38.98.134/organizations'});
+  console.log(data);
+  
+    if (loading || !data) {
+      return <div>Загрузка...</div>;
+    }
   return (
     <div id="organizasii">
       <div className="container">
         <div className="organizasii">
-          <div className="organizasii--cards">
-            <div className="organizasii--cards__card">
-              <div className="organizasii--cards__card--title">
-                <img
-                  src="https://devkg.com/images/organizations/88ba3e55ab38d5fe5c710cb8aede1e6f.webp"
-                  alt="img"
-                />
-                <div className="organizasii--cards__card--title__company">
-                  <h3>Компания</h3>
-                  <h2 onClick={() => nav("/detailO")}>MBank</h2>
-                </div>
-              </div>
-              <div className="organizasii--cards__card--about">
-                <div className="organizasii--cards__card--about__block">
-                  <h3>Вакансии</h3>
-                  <h2>166</h2>
-                </div>
-                <div className="organizasii--cards__card--about__block">
-                  <h3>Мероприятия</h3>
-                  <h2>1</h2>
-                </div>
-                <div className="organizasii--cards__card--about__block">
-                  <h3>Видео</h3>
-                  <h2>0</h2>
-                </div>
-              </div>
-            </div>
-          </div>
+          {data && data.map((organizations: any, index: number) => {
+            return(
+              <OrganizationsList
+              key={index}
+              name = {organizations.name}
+              events_count = {organizations.events_count}
+              jobs_count = {organizations.jobs_count}
+              meetups_count = {organizations.meetups_count}
+              icon_formats = {organizations.icon_formats}
+              />
+            )
+          })}
           <div className="organizasii--btn">
             <button>Следующая страница</button>
           </div>

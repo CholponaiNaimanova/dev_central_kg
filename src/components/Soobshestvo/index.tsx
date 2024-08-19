@@ -7,10 +7,10 @@ function Soobshestvo() {
   
   if (loading || !data) {
     return <div>Загрузка...</div>;
-  }
+  } 
 
   
-  return (
+  return ( 
     <div id="soo">
       <div className="container">
         <div className="soo">
