@@ -2,15 +2,13 @@ import React, { useEffect, useState } from "react";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Modal from '../Modal';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ModalLogin from '../ModalLogin';
 import { isUserLoggetIn } from "../Utils";
 import Cookies from 'js-cookie';
 
 const Header: React.FC = () => {
 
-  const location = useLocation()
-  console.log('location', location.pathname);
   
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [modalVisible, setModalVisible] = useState(false);

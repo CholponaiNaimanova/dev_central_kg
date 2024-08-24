@@ -23,8 +23,6 @@ const ModalLogin: React.FC<LoginModalProps> = ({ show, handleClose }) => {
     const apiURL = isLoginTab ? loginAPI : signupAPI
     const {login} = useAuth({url: apiURL})
 
-    console.log('email', userName);
-    console.log('password', password);
 
     const handleAuth = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -34,10 +32,9 @@ const ModalLogin: React.FC<LoginModalProps> = ({ show, handleClose }) => {
         }
         if (!isLoginTab && password !== confirmPassword) {
             alert("Passwords do not match");
+            return 
         }
          const res: any = await login(userName, password)
-         console.log('res', res);
-         
          if(res?.success) {
             Cookies.set('authToken', res.data)
             navigate('/')
