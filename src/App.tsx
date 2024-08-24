@@ -11,6 +11,8 @@ import DetailOrganization from "./components/DetailOrganization";
 import Events from "./components/Events";
 import VideoList from "./components/VideoDetail";
 import VideoDetail from "./components/VideoDetail";
+import RouterProtector from "./components/RouterProtect";
+import ModalLogin from "./components/ModalLogin";
 
 function App() {
   return (
@@ -18,6 +20,12 @@ function App() {
       <Header />
       <Routes>
         <Route path="/vacancy" element={<Vacancies />} />
+        <Route path="protectedPath" element={
+    <RouterProtector>
+        <Vacancies />
+    </RouterProtector>
+}/>
+
         <Route path="/events" element={<Events />} />
         <Route path="/meetups" element={<Videoo />} />
         <Route path="/videoDetail" element={<VideoDetail />} />

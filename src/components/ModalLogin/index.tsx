@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks';
 
 interface LoginModalProps {
     show: boolean;
@@ -15,48 +16,34 @@ const signupAPI = 'http://3.38.98.134/auth/signup'
 const ModalLogin: React.FC<LoginModalProps> = ({ show, handleClose }) => {
 
     const navigate = useNavigate()
-
     const [userName, setUserName] = React.useState<string>('')
     const [password, setPassword] = React.useState<string>('')
-    const [consfirmPassword, setConsfirmPassword] = React.useState<string>('')
+    const [confirmPassword, setConfirmPassword] = React.useState<string>('');    
     const [isLoginTab, setIsLoginTab] = React.useState<boolean>(true)
+    const apiURL = isLoginTab ? loginAPI : signupAPI
+    const {login} = useAuth({url: apiURL})
 
     console.log('email', userName);
     console.log('password', password);
 
-    const handleAuth = (e: React.FormEvent) => {
-        e.preventDefault()
-        if (!userName || !password) (
-            alert('Please fill all the fields')
-        )
-        if (!isLoginTab && password !== consfirmPassword) {
-            alert("Password do not match")
+    const handleAuth = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!userName || !password) {
+            alert('Please fill all the fields');
+            return;
         }
-        const authURL = isLoginTab ? loginAPI : signupAPI
-        try{
-            axios.post(authURL,{
-                userName,
-                password
-            })
-            .then(res => {
-                const {token, message} = res.data
-                if(res.data.success){
-                    console.log("data", res.data);
-                    Cookies.set('authToken', token)
-                    alert(message)
-                    navigate('/')
-                } else{
-                    alert(message)
-                }
-                console.log(res.data);
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        if (!isLoginTab && password !== confirmPassword) {
+            alert("Passwords do not match");
         }
-        catch(error) {
-            console.log(error);
-        }
+         const res: any = await login(userName, password)
+         console.log('res', res);
+         
+         if(res?.success) {
+            Cookies.set('authToken', res.data)
+            navigate('/')
+         } else{
+            alert('error')
+         }
     }
     
     return (
@@ -79,12 +66,14 @@ const ModalLogin: React.FC<LoginModalProps> = ({ show, handleClose }) => {
                     value={password}
                      type="password" placeholder='password'/>
 
-{
-                    isLoginTab && (
-                    <input
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={consfirmPassword}
-                     type="password" placeholder='password'/>
+                    {
+                    !isLoginTab && (
+                            <input
+                              onChange={(e) => setConfirmPassword(e.target.value)}
+                              value={confirmPassword}
+                              type="password"
+                              placeholder='confirm password'
+                            />
                     )}
 
                     <button className='submitBtn' type='submit'>

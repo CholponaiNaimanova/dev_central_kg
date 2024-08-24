@@ -12,17 +12,15 @@ const Header: React.FC = () => {
   const location = useLocation()
   console.log('location', location.pathname);
   
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const [modalVisible, setModalVisible] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [modalVisible, setModalVisible] = useState(false);
     const [loginModalVisible, setLoginModalVisible] = useState(false);
     const nav = useNavigate()
 
     useEffect(() => {
-      const loggedIn = isUserLoggetIn()
-      console.log('loggedIn', loggedIn);
-      
-      setIsLoggedIn(loggedIn)
-    },[isLoggedIn, setIsLoggedIn])
+      const loggedIn = isUserLoggetIn();
+      setIsLoggedIn(loggedIn);
+  }, []);
 
     const logout = () => {
       Cookies.remove('authToken')
@@ -63,10 +61,10 @@ const Header: React.FC = () => {
                               <GiHamburgerMenu />
                           </div>
                         ): (
-                        <div className="">
+                        <div className="my">
                           <button className='icon-btn'><FaArrowRightToBracket /></button>
                           <button className="login-button" onClick={() =>  {
-                            nav('/auth')
+                          setLoginModalVisible(true)
                           }}>Войти</button>
                         </div>
                         )}
@@ -74,8 +72,9 @@ const Header: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <Modal show={modalVisible} handleClose={closeModal} />
-            <ModalLogin show={loginModalVisible} handleClose={closeLoginModal} />
+            {/* <Modal show={modalVisible} handleClose={closeModal} /> */}
+            {loginModalVisible && 
+            <ModalLogin show={loginModalVisible} handleClose={closeLoginModal} />}
         </div>
     );
 };
