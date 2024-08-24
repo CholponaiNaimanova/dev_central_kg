@@ -72,7 +72,7 @@ const Header: React.FC = () => {
                     </div>
                 </div>
             </div>
-            {/* <Modal show={modalVisible} handleClose={closeModal} /> */}
+            <Modal show={modalVisible} handleClose={closeModal} />
             {loginModalVisible && 
             <ModalLogin show={loginModalVisible} handleClose={closeLoginModal} />}
         </div>
