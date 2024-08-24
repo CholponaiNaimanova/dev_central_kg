@@ -1,28 +1,107 @@
 import React from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks';
 
 interface LoginModalProps {
     show: boolean;
     handleClose: () => void;
 }
 
+const loginAPI = 'http://3.38.98.134/auth/login'
+const signupAPI = 'http://3.38.98.134/auth/signup'
+
+
 const ModalLogin: React.FC<LoginModalProps> = ({ show, handleClose }) => {
+
+    const navigate = useNavigate()
+    const [userName, setUserName] = React.useState<string>('')
+    const [password, setPassword] = React.useState<string>('')
+    const [confirmPassword, setConfirmPassword] = React.useState<string>('');    
+    const [isLoginTab, setIsLoginTab] = React.useState<boolean>(true)
+    const apiURL = isLoginTab ? loginAPI : signupAPI
+    const {login} = useAuth({url: apiURL})
+
+
+    const handleAuth = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!userName || !password) {
+            alert('Please fill all the fields');
+            return;
+        }
+        if (!isLoginTab && password !== confirmPassword) {
+            alert("Passwords do not match");
+            return 
+        }
+         const res: any = await login(userName, password)
+         if(res?.success) {
+            Cookies.set('authToken', res.data)
+            navigate('/')
+         } else{
+            alert('error')
+         }
+    }
+    
     return (
         <div className={`modal ${show ? 'show' : ''}`} onClick={handleClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
 
                 <button className="close" onClick={handleClose}>Закрыть</button>
 
-                <div className="modal-text">
-                    <h1>Войти через Telegram:</h1>
-                    <button className='btn'>Войти через Telegram</button>
-                </div>
+                <form className='login' onSubmit={handleAuth}>
+                    <h1>{isLoginTab ? 'Login' : 'Sign Up'}</h1>
 
-                <div className="image">
-                    <img src="https://devkg.com/js/img/not-found-jobs.f847c90.svg" alt="img" width={270}/>
-                </div>
+                    <input      
+                    onChange={(e) => setUserName(e.target.value)}
+                    value={userName}
+                     type="text" placeholder='email'/>
 
-                <h2>*Если в вашей стране заблокирован телеграм, используйте VPN</h2>
-                
+
+                    <input
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                     type="password" placeholder='password'/>
+
+                    {
+                    !isLoginTab && (
+                            <input
+                              onChange={(e) => setConfirmPassword(e.target.value)}
+                              value={confirmPassword}
+                              type="password"
+                              placeholder='confirm password'
+                            />
+                    )}
+
+                    <button className='submitBtn' type='submit'>
+                        {isLoginTab ? 'Login' : 'Sign Up'}
+                    </button>
+
+                    {
+                        isLoginTab? (
+                            <div className="register">
+                        <p>Don't have an account?</p>
+                        <button className='signupLink'
+                        onClick={(e) => {
+                            e.preventDefault()
+                            setIsLoginTab(false)
+                        }}
+                        >Signup</button>
+                    </div>
+                        ): (
+                            <div className="register">
+                        <p>Already have an account?</p>
+                        <button className='signupLink'
+                        onClick={(e) => {
+                            e.preventDefault()
+                            setIsLoginTab(true)
+                        }}
+                        >Login</button>
+                    </div>
+                        )
+                    }
+
+                </form>
             </div>
 
 

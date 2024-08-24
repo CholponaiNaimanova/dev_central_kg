@@ -1,19 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Modal from '../Modal';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ModalLogin from '../ModalLogin';
+import { isUserLoggetIn } from "../Utils";
+import Cookies from 'js-cookie';
 
 const Header: React.FC = () => {
-    const [modalVisible, setModalVisible] = useState(false);
+
+  
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [modalVisible, setModalVisible] = useState(false);
     const [loginModalVisible, setLoginModalVisible] = useState(false);
+    const nav = useNavigate()
+
+    useEffect(() => {
+      const loggedIn = isUserLoggetIn();
+      setIsLoggedIn(loggedIn);
+  }, []);
+
+    const logout = () => {
+      Cookies.remove('authToken')
+      setIsLoggedIn(false)
+    }
 
     const openModal = () => setModalVisible(true);
     const closeModal = () => setModalVisible(false);
 
     const openLoginModal = () => setLoginModalVisible(true);
     const closeLoginModal = () => setLoginModalVisible(false);
+
+    const isLoggetIn = isUserLoggetIn()
+
+    
 
   return (
     <div id="header">
@@ -32,16 +52,27 @@ const Header: React.FC = () => {
 
 
                     <div className="my-btn">
-                        <div className="menu" onClick={openModal}>
-                            <GiHamburgerMenu />
+                        {isLoggetIn ? (
+                          <div className="menu" onClick={() => {
+                          logout()
+                          }}>
+                              <GiHamburgerMenu />
+                          </div>
+                        ): (
+                        <div className="my">
+                          <button className='icon-btn'><FaArrowRightToBracket /></button>
+                          <button className="login-button" onClick={() =>  {
+                          setLoginModalVisible(true)
+                          }}>Войти</button>
                         </div>
-                        <button className='icon-btn'><FaArrowRightToBracket /></button>
-                        <button className="login-button" onClick={openLoginModal}>Войти</button>
+                        )}
+                        
                     </div>
                 </div>
             </div>
             <Modal show={modalVisible} handleClose={closeModal} />
-            <ModalLogin show={loginModalVisible} handleClose={closeLoginModal} />
+            {loginModalVisible && 
+            <ModalLogin show={loginModalVisible} handleClose={closeLoginModal} />}
         </div>
     );
 };
