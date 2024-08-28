@@ -12,7 +12,7 @@ import Events from "./components/Events";
 import VideoList from "./components/VideoDetail";
 import VideoDetail from "./components/VideoDetail";
 import RouterProtector from "./components/RouterProtect";
-import ModalLogin from "./components/ModalLogin";
+import { AddVac } from "./components/AddVacancies";
 
 function App() {
   return (
@@ -34,6 +34,7 @@ function App() {
         <Route path="/community" element={<Soobshestvo />} />
         <Route path="/detailVacancy" element={<DetailVacancy />} />
         <Route path="/detailO" element={<DetailOrganization />} />
+        <Route path="/addVac" element={<AddVac />} />
       </Routes>
       <Footer />
     </div>

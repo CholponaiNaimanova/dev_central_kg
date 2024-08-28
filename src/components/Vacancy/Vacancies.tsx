@@ -1,5 +1,6 @@
 import VacancyList from "./VacancyList";
 import useFetch from "../../hooks/useFetch";
+import { AddVac } from "../AddVacancies";
 
 export const Vacancies = () => {
   const { data, loading } = useFetch();
@@ -14,7 +15,8 @@ console.log(data);
       <div className="container">
         <div className="vacancy">
           <div className="vacancy--btn">
-            <button>Добавить вакансию</button>
+          <button onClick={() => <AddVac />}>
+          Добавить вакансию</button>
           </div>
           {data &&
                   data.map((job: any, index: number) => {
