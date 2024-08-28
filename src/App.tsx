@@ -12,6 +12,7 @@ import Events from "./components/Events";
 import VideoList from "./components/VideoDetail";
 import VideoDetail from "./components/VideoDetail";
 import RouterProtector from "./components/RouterProtect";
+import { AddVac } from "./components/AddVacancies";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
@@ -37,7 +38,8 @@ function App() {
           <Route path="/community" element={<Soobshestvo />} />
           <Route path="/detailVacancy" element={<DetailVacancy />} />
           <Route path="/detailO" element={<DetailOrganization />} />
-        </Routes>
+          <Route path="/addVac" element={<AddVac />} />
+      </Routes>
         <Footer />
       </div>
     </QueryClientProvider>
