@@ -13,6 +13,8 @@ import VideoList from "./components/VideoDetail";
 import VideoDetail from "./components/VideoDetail";
 import RouterProtector from "./components/RouterProtect";
 import { AddVac } from "./components/AddVacancies";
+import { ModalAddVac } from "./components/ModalAddVac";
+import { AddJobs } from "./components/AddJobs";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
@@ -39,6 +41,8 @@ function App() {
           <Route path="/detailVacancy" element={<DetailVacancy />} />
           <Route path="/detailO" element={<DetailOrganization />} />
           <Route path="/addVac" element={<AddVac />} />
+        <Route path="/modalAddVac" element={<ModalAddVac />} />
+        <Route path="/addJobs" element={<AddJobs />} />
       </Routes>
         <Footer />
       </div>
