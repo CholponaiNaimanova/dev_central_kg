@@ -35,6 +35,55 @@ export const AddJobs = () => {
 
             </div>
 
+            <div className="telegram">
+                
+                    <h1>Telegram</h1>
+                    <input type="text" />
+
+                    <h1>Skype</h1>
+                    <input type="text" />
+
+                    <h1>E-Mail</h1>
+                    <input type="text" />
+
+                    <h1>Телефон</h1>
+                    <input type="text" />
+
+                    <h1>Тип<span>*</span></h1>
+
+                    <select name="" id="">
+                        <option></option>
+                        <option value="">Работа в офисе (только Кыргызстан)</option>
+                        <option value="">Разовая работа (Проект)</option>   
+                        <option value="">Удаленная работа (Remote)</option>
+                        <option value="">Переезд (Работа за границей)</option>
+                        <option value="">Стажировка (только Кыргызстан)</option>
+                    </select>
+
+                    <h1>Город <span>*</span></h1>
+                    <input type="text" />
+
+                    <h1>Оклад <span>*</span></h1>
+
+                    <select name="" id="">
+                        <option></option>
+                        <option value="">Фиксированный оплата за проект</option>
+                        <option value="">Почасовая оплата</option>
+                        <option value="">Ежемесячный оклад</option>
+                        <option value="">Неоплачиваемая</option>
+                    </select>
+
+
+                    <p>Не заполненны обязательные поля: <span>Организация, Должность, Описание вакансии, Город, Контакт</span></p>
+
+
+                    <div className="btn">
+                        <button>Продолжить</button>
+                        <button>Сохранить</button>
+                    </div>
+                
+            </div>
+
             </div>
         </div>
     )

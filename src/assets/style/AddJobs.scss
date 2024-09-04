@@ -88,6 +88,67 @@
                     color: #a7b0c2;
                     padding-left: 100px;
             }
+
+            
+            }
+
+            .telegram{
+                margin-top: 40px;
+                h1{
+                    font-size: 14px;
+                    letter-spacing: .03em;
+                    font-weight: 700;
+                    color: #a7b0c2;
+                    margin-bottom: 8px;
+                }
+                input{
+                    padding: 12px 76px;
+                    background: #fff;
+                    border: 1px solid #e5e5e5;
+                    box-sizing: border-box;
+                    outline: none;
+                    margin-bottom: 30px;
+                }
+
+                select{
+                    font-size: 14px;
+                    background: transparent;
+                    color: #191f5d;
+                    outline: none;
+                    padding: 10px 50px;
+                    border-radius: 10px;
+                    margin-bottom: 30px;
+                }
+                p{
+                    font-size: 17px;
+                    color: black;
+                    span{
+                    color: #fd6a5a;
+                    }
+                }
+
+                .btn{
+                    display: flex;
+                    gap: 10px;
+                    margin-bottom: 50px;
+                    button{
+                        cursor: default;
+                        background: #e5e5e5;
+                        color: #191f5d;
+                        font-weight: 700;
+                        font-size: 14px;
+                        letter-spacing: .03em;
+                        height: 38px;
+                        line-height: 38px;
+                        padding: 0 25px;
+                        min-width: 145px;
+                        text-decoration: none;
+                        transition: all .2s;
+                        border: none;
+                        cursor: pointer;
+                        outline: none;
+                    }
+                }
         }
     }
 }
