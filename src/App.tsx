@@ -14,11 +14,10 @@ import VideoDetail from "./components/VideoDetail";
 import RouterProtector from "./components/RouterProtect";
 import  ModalAddVac  from "./components/ModalAddVac";
 import AddJobs from "./components/AddJobs";
+import AddEvents from "./components/AddEvents";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
-import AddEvents from "./components/AddEvents";
-
 
 function App() {
   return (
@@ -26,22 +25,22 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/vacancy" element={<Vacancies />} />
-          <Route path="protectedPath" element={
-      <RouterProtector>
-          <Vacancies />
-      </RouterProtector>
-  }/>
-
-          <Route path="/events" element={<Events />} />
-          <Route path="/meetups" element={<Videoo />} />
-          <Route path="/videoDetail" element={<VideoDetail />} />
-          <Route path="/videoList" element={< VideoList/>} />
-          <Route path="/organizations" element={<Organizasii />} />
-          <Route path="/community" element={<Soobshestvo />} />
-          <Route path="/detailVacancy" element={<DetailVacancy />} />
-          <Route path="/detailO" element={<DetailOrganization />} />
-          <Route path="/addVac" element={<AddVac />} />
+          <Route path="addJobs" element={
+            <RouterProtector>
+                <AddJobs />
+            </RouterProtector>
+          }/>
+          <Route path="/modalAddVac" element={
+            <RouterProtector>
+                <ModalAddVac />
+            </RouterProtector>
+          }/>
+          <Route path="/addEvents" element={
+            <RouterProtector>
+                <AddEvents />
+            </RouterProtector>
+          }/>
+        <Route path="/vacancy" element={<Vacancies />} />
         <Route path="/events" element={<Events />} />
         <Route path="/meetups" element={<Videoo />} />
         <Route path="/videoDetail" element={<VideoDetail />} />
@@ -50,9 +49,6 @@ function App() {
         <Route path="/community" element={<Soobshestvo />} />
         <Route path="/detailVacancy" element={<DetailVacancy />} />
         <Route path="/detailO" element={<DetailOrganization />} />
-        <Route path="/modalAddVac" element={<ModalAddVac />} />
-        <Route path="/addJobs" element={<AddJobs />} />
-        <Route path="/addEvents" element={<AddEvents />} />
       </Routes>
         <Footer />
       </div>
