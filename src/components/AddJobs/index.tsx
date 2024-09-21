@@ -1,6 +1,6 @@
 
 
-export const AddJobs = () => {
+function AddJobs() {
 
     return(
         <div className="jobs">
@@ -88,3 +88,5 @@ export const AddJobs = () => {
         </div>
     )
 }
+
+export default AddJobs;

@@ -1,8 +1,12 @@
 import useFetch from "../../hooks/useFetch";
 import EventsList from "./EventsList";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 function Events() {
+
+const navigate = useNavigate();
+
 const events_url = 'http://3.38.98.134/events' 
 const  { data, loading } = useFetch({
   url: events_url
@@ -11,11 +15,17 @@ const  { data, loading } = useFetch({
 if (loading) {
   return <div>Loading</div>;
 }
+
+
+const click = () => {
+  navigate('/addEvents');
+};
+
   return (
     <div id="events">
       <div className="container">
         <div className="btn1">
-          <button>Добавить мероприятиe</button>
+          <button onClick={click}>Добавить мероприятиe</button>
         </div>
         {data &&
                   data.map((el: any, index: number) => {

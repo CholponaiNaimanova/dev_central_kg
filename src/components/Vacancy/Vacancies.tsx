@@ -2,7 +2,7 @@ import VacancyList from "./VacancyList";
 import useFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 
-export const Vacancies = () => {
+function Vacancies() {
   const { data, loading } = useFetch();
   const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ export const Vacancies = () => {
   }
 
   const handleClick = () => {
-    navigate('/addVac');
+    navigate('/addJobs');
   };
 
   return (
@@ -47,3 +47,5 @@ export const Vacancies = () => {
     </div>
   );
 };
+
+export default Vacancies;

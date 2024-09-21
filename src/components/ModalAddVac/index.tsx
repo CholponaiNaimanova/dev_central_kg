@@ -1,8 +1,7 @@
-import { AddVac } from "../AddVacancies"
 import { useNavigate } from "react-router-dom";
 
 
-export const ModalAddVac = () => {
+function ModalAddVac() {
     const nav = useNavigate()
 
 
@@ -10,7 +9,6 @@ export const ModalAddVac = () => {
         <div className="addVc">
             <div className="container">
                 <div className="add">
-                    {/* <AddVac/> */}
                     <img src="https://devkg.com/js/img/not-found-jobs.f847c90.svg" alt="img" width={470}/>
 
                     <div className="addText">
@@ -28,3 +26,5 @@ export const ModalAddVac = () => {
         </div>
     )
 }
+
+export default ModalAddVac;

@@ -6,18 +6,19 @@ import Videoo from "./components/Videoo";
 import Organizasii from "./components/Organizasii";
 import Soobshestvo from "./components/Soobshestvo";
 import DetailVacancy from "./components/DetailVacancy";
-import { Vacancies } from "./components/Vacancy/Vacancies";
+import Vacancies  from "./components/Vacancy/Vacancies";
 import DetailOrganization from "./components/DetailOrganization";
 import Events from "./components/Events";
 import VideoList from "./components/VideoDetail";
 import VideoDetail from "./components/VideoDetail";
 import RouterProtector from "./components/RouterProtect";
-import { AddVac } from "./components/AddVacancies";
-import { ModalAddVac } from "./components/ModalAddVac";
-import { AddJobs } from "./components/AddJobs";
+import  ModalAddVac  from "./components/ModalAddVac";
+import AddJobs from "./components/AddJobs";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
+import AddEvents from "./components/AddEvents";
+
 
 function App() {
   return (
@@ -41,8 +42,17 @@ function App() {
           <Route path="/detailVacancy" element={<DetailVacancy />} />
           <Route path="/detailO" element={<DetailOrganization />} />
           <Route path="/addVac" element={<AddVac />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/meetups" element={<Videoo />} />
+        <Route path="/videoDetail" element={<VideoDetail />} />
+        <Route path="/videoList" element={< VideoList/>} />
+        <Route path="/organizations" element={<Organizasii />} />
+        <Route path="/community" element={<Soobshestvo />} />
+        <Route path="/detailVacancy" element={<DetailVacancy />} />
+        <Route path="/detailO" element={<DetailOrganization />} />
         <Route path="/modalAddVac" element={<ModalAddVac />} />
         <Route path="/addJobs" element={<AddJobs />} />
+        <Route path="/addEvents" element={<AddEvents />} />
       </Routes>
         <Footer />
       </div>
