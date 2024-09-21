@@ -5,7 +5,7 @@ import Modal from '../Modal';
 import { Link, useNavigate } from 'react-router-dom';
 import ModalLogin from '../ModalLogin';
 import { isUserLoggetIn } from "../Utils";
-import Cookies from 'js-cookie';
+import Cookies from 'js-cookie'; 
 
 const Header: React.FC = () => {
 

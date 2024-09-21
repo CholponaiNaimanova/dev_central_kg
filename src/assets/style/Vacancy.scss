@@ -12,6 +12,7 @@
         color: white;
         font-size: 16px;
         margin: 40px 0;
+        cursor: pointer;
       }
     }
 
@@ -21,11 +22,12 @@
       align-items: center;
       button {
         padding: 10px 30px;
-        border: none;
+        border: none; 
         background: rgb(175, 226, 175);
         color: white;
         font-size: 16px;
         margin: 40px 0;
+        cursor: pointer;
       }
     }
 
@@ -36,7 +38,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-
+      cursor: pointer;
       &__title {
         &--com {
           display: flex;
