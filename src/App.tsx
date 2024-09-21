@@ -12,31 +12,35 @@ import Events from "./components/Events";
 import VideoList from "./components/VideoDetail";
 import VideoDetail from "./components/VideoDetail";
 import RouterProtector from "./components/RouterProtect";
-import ModalLogin from "./components/ModalLogin";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Routes>
-        <Route path="/vacancy" element={<Vacancies />} />
-        <Route path="protectedPath" element={
-    <RouterProtector>
-        <Vacancies />
-    </RouterProtector>
-}/>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/vacancy" element={<Vacancies />} />
+          <Route path="protectedPath" element={
+      <RouterProtector>
+          <Vacancies />
+      </RouterProtector>
+  }/>
 
-        <Route path="/events" element={<Events />} />
-        <Route path="/meetups" element={<Videoo />} />
-        <Route path="/videoDetail" element={<VideoDetail />} />
-        <Route path="/videoList" element={< VideoList/>} />
-        <Route path="/organizations" element={<Organizasii />} />
-        <Route path="/community" element={<Soobshestvo />} />
-        <Route path="/detailVacancy" element={<DetailVacancy />} />
-        <Route path="/detailO" element={<DetailOrganization />} />
-      </Routes>
-      <Footer />
-    </div>
+          <Route path="/events" element={<Events />} />
+          <Route path="/meetups" element={<Videoo />} />
+          <Route path="/videoDetail" element={<VideoDetail />} />
+          <Route path="/videoList" element={< VideoList/>} />
+          <Route path="/organizations" element={<Organizasii />} />
+          <Route path="/community" element={<Soobshestvo />} />
+          <Route path="/detailVacancy" element={<DetailVacancy />} />
+          <Route path="/detailO" element={<DetailOrganization />} />
+        </Routes>
+        <Footer />
+      </div>
+    </QueryClientProvider>
   );
 }
 

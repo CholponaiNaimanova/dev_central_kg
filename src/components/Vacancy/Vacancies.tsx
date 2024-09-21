@@ -3,7 +3,6 @@ import useFetch from "../../hooks/useFetch";
 
 export const Vacancies = () => {
   const { data, loading } = useFetch();
-console.log(data);
 
   if (loading || !data) {
     return <div>Загрузка...</div>;
